@@ -9,7 +9,36 @@
     "typescript": "^3.7.4"
   },
   "scripts": {
-    "build": "tsc index.ts",
-    "start": "node index.js"
+    "lint": "eslint src --ext .ts --fix",
+    "lint-staged": "lint-staged",
+    "build": "tsc",
+    "start": "ts-node dist/index.js"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn lint",
+      "git add"
+    ],
+    "*.ts": [
+      "yarn lint",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@typescript-eslint/parser": "^2.13.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "ts-node": "^8.5.4"
   }
 }
