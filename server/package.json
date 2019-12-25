@@ -12,7 +12,7 @@
   "scripts": {
     "lint": "eslint src --ext .ts --fix",
     "build": "tsc",
-    "start": "ts-node dist/index.js"
+    "start": "ts-node src/index.ts"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^2.13.0",
