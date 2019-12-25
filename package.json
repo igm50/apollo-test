@@ -1,0 +1,42 @@
+{
+  "name": "apollo-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/igm50/apollo-test.git",
+  "author": "jintz <keisuke.igimi@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "lint": "yarn workspace client lint && yarn workspace server lint",
+    "lint-staged": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "client/**/*.{js,jsx,ts,tsx}": [
+      "yarn workspace client lint",
+      "git add"
+    ],
+    "server/**/*.{js,jsx,ts,tsx}": [
+      "yarn workspace server lint",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1"
+  }
+}
