@@ -5,11 +5,20 @@
   "license": "MIT",
   "dependencies": {
     "apollo-server": "^2.9.14",
+    "cross-env": "^6.0.3",
     "graphql": "^14.5.8",
     "typescript": "^3.7.4"
   },
   "scripts": {
-    "build": "tsc index.ts",
-    "start": "node index.js"
+    "lint": "eslint src --ext .ts --fix",
+    "build": "tsc",
+    "start": "ts-node src/index.ts"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^2.13.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1",
+    "ts-node": "^8.5.4"
   }
 }
